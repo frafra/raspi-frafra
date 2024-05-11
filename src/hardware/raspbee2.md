@@ -66,7 +66,6 @@ mqtt:
 serial:
   port: /dev/ttyAMA0
   adapter: deconz
-EOF
 ```
 
 ### Mosquitto
