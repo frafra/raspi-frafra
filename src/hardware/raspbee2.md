@@ -91,7 +91,7 @@ NON SONO SICURO DI NIENTE!!!
 >    Would you like the serial port hardware to be enabled? → Yes
 
 
-Modificare `/boot/config.txt`, aggiungendo questa sezione:
+Modificare `/boot/firmware/config.txt`, aggiungendo questa sezione:
 ```
 # Disable bluetooth (interference with RaspBee II)
 dtoverlay=disable-bt   
