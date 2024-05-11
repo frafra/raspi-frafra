@@ -1,0 +1,6 @@
+[book]
+authors = ["Francesco Frassinelli"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Raspberry Pi di FraFra"
