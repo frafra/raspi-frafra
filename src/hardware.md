@@ -12,7 +12,7 @@ Dettagli: [BME280](./hardware/bme280.md)
 
 ## IKEA Trådfri
 
-L'IKEA Trådfri è una presa di corrente che si può controllare tramite Zigbee.
+L'IKEA Trådfri è una vecchia serie di componenti per la casa controllabili tramite Zigbee.
 
 ## RaspBee II
 
@@ -20,6 +20,6 @@ Il RaspBee II è un modulo per parlare con dispositivi ZigBee.
 
 Dettagli: [RaspBee II](./hardware/raspbee2.md)
 
-## Altro
+## Elettronica
 
-Cavi jumper, un cavo ribbon per collegare una schedina che mi espone tutti i pin del Raspberry Pi su una piccola breadboard, un tester per verificare di non star collegando le linee di alimentazione in maniera errata.
+Un cavo ribbon per collegare una schedina che mi espone tutti i pin del Raspberry Pi su una piccola breadboard.

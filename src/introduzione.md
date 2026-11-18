@@ -7,3 +7,8 @@ Il mio obiettivo finale è quello di automatizzare alcune operazioni in casa tra
 Obiettivi raggiunti:
 - [X] Far funzionare il modulo BME280
 - [X] Far funzionare il modulo RaspBee II
+- [X] Collegare il BME280 a MQTT
+- [X] Controllare IKEA Trådfri con Zigbee2MQTT
+- [X] Configurare Home Assistant
+- [ ] Accesso remoto
+- [ ] Videocamera locale

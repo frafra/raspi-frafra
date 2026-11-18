@@ -1,6 +1,6 @@
 # I²C
 
-Per abilitare I²C, necessario per il funzionamento dei vari moduli, bisogna lanciare il programma di configurazione del Raspberry Pi:
+Per abilitare I²C, necessario per il modulo [BME280](./hardware/bme280.md), bisogna lanciare il programma di configurazione del Raspberry Pi:
 
 ```
 sudo raspi-config
