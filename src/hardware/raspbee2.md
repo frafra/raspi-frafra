@@ -26,7 +26,7 @@ sudo reboot
 Verifica:
 
 ```bash
-sudo hwclock --systohc --verbose
+timedatectl
 ls -l /dev/ttyAMA0
 ```
 
@@ -34,8 +34,6 @@ ls -l /dev/ttyAMA0
 
 [Zigbee2MQTT](https://www.zigbee2mqtt.io/) è un progetto che permette di interfacciarsi a numerosi dispositivi che dialogano tramite protocollo Zigbee.
 Installarlo tramite container rende la procedura più semplice e pulita, senza dover abilitare repository aggiuntivi.
-
-Istruzioni prese da: [www.zigbee2mqtt.io/guide/installation/02_docker.html#rootless-with-podman-3-2](https://www.zigbee2mqtt.io/guide/installation/02_docker.html#rootless-with-podman-3-2)
 
 ```bash
 sudo apt-get install --no-install-recommends podman uidmap slirp4netns
@@ -67,6 +65,8 @@ serial:
   port: /dev/ttyAMA0
   adapter: deconz
 ```
+
+Maggiori informazioni su [Zigbee2MQTT - deCONZ](https://www.zigbee2mqtt.io/guide/adapters/deconz.html).
 
 ### Mosquitto
 
