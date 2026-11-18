@@ -8,30 +8,34 @@ Il RaspBee si monta direttamente [sui primi connettori del Raspberry Pi](https:/
 
 ## Preparazione
 
-Se non lo si è già fatto, abilitare [I²C](../i2c.html).
+Il RaspBee II comunica con il Raspberry Pi tramite la porta seriale. I passi da seguire, in ordine:
 
-Bisogna compilare il modulo per il kernel [raspbee2-rtc](https://github.com/dresden-elektronik/raspbee2-rtc/).
+1. Abilitare la seriale, usando `sudo raspi-config`:
 
-Prima del riavvio, usare `sudo raspi-config`:
+   > Interfacing Options → Serial
+   >
+   >    Would you like a login shell accessible over serial? → No
+   >
+   >    Would you like the serial port hardware to be enabled? → Yes
 
-> Interfacing Options → Serial
->
->    Would you like a login shell accessible over serial? → No
->
->    Would you like the serial port hardware to be enabled? → Yes
+2. Modificare `/boot/firmware/config.txt`, aggiungendo questa sezione alla fine del file:
+   ```
+   # Disable bluetooth (interference with RaspBee II)
+   dtoverlay=disable-bt
+   ```
 
+3. Riavviare il sistema con `reboot` e fare la verifica:
 
-Modificare `/boot/firmware/config.txt`, aggiungendo questa sezione alla fine del file:
-```
-# Disable bluetooth (interference with RaspBee II)
-dtoverlay=disable-bt
-```
+   ```bash
+   ls -l /dev/ttyAMA0
+   ```
 
-Riavviare il sistema con `reboot` e fare la verifica:
+### RTC
+
+Il RaspBee II integra un orologio (RTC). Per usarlo è necessario compilare il modulo per il kernel [raspbee2-rtc](https://github.com/dresden-elektronik/raspbee2-rtc/); una volta installato, il suo stato si controlla con:
 
 ```bash
 timedatectl
-ls -l /dev/ttyAMA0
 ```
 
 ## Zigbee2MQTT
@@ -75,6 +79,10 @@ Maggiori informazioni su [Zigbee2MQTT - deCONZ](https://www.zigbee2mqtt.io/guide
 
 ### Mosquitto
 
+```bash
+mkdir -p ~/Code/mosquitto
+```
+
 `~/Code/mosquitto/mosquitto.conf`:
 ```
 listener 1883
@@ -82,7 +90,7 @@ allow_anonymous true
 ```
 
 ```
-podman run --rm --name mosquitto --network host -p 1883:1883 -p 9001:9001 -v ~/Code/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf registry.hub.docker.com/library/eclipse-mosquitto
+podman run --rm --name mosquitto --network host -v ~/Code/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf registry.hub.docker.com/library/eclipse-mosquitto
 ```
 
 ### Avvio di prova
@@ -94,11 +102,10 @@ podman run \
    --rm \
    --name=zigbee2mqtt \
    --network host \
-   -p 8080:8080 \
    -v ~/Code/zigbee2mqtt/data:/app/data \
    -v /run/udev:/run/udev:ro \
+   -v /etc/localtime:/etc/localtime:ro \
    --device=/dev/ttyAMA0:/dev/ttyAMA0 \
    --group-add keep-groups \
-   -e TZ=Europe/Oslo \
    registry.hub.docker.com/koenkk/zigbee2mqtt
 ```

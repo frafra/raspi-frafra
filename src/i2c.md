@@ -14,7 +14,7 @@ Ecco come navigare attraverso i menù per abilitarlo:
 - `<Ok>`
 - `<Finish>`
 
-La stessa operazione si può fare evitando il menù: `sudo raspi-config nonint do_i2c 0`. Lo sconsiglio, perché `raspi-config` non pare avere una opzione `--help` per controllare le possibile opzioni.
+La stessa operazione si può fare evitando il menù: `sudo raspi-config nonint do_i2c 0`. Lo sconsiglio, perché `raspi-config` non pare avere una opzione `--help` per controllare le possibili opzioni.
 
 Infine, per verificare il collegamento:
 

@@ -4,7 +4,7 @@ Ecco un elenco, non completo, dell'hardware che uso.
 
 ## Raspberry
 
-Raspberry Pi 4 Model B del 2018.
+Raspberry Pi 4 Model B del 2019.
 
 ## BME280
 
