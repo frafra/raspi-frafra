@@ -12,18 +12,22 @@ Se non lo si è già fatto, abilitare [I²C](../i2c.html).
 
 Bisogna compilare il modulo per il kernel [raspbee2-rtc](https://github.com/dresden-elektronik/raspbee2-rtc/).
 
-```bash
-sudo apt-get install build-essential git raspberrypi-kernel-headers
-mkdir ~/Code
-cd "$_"
-git clone https://github.com/dresden-elektronik/raspbee2-rtc.git
-cd raspbee2-rtc
-make
-sudo make install
-sudo reboot
+Prima del riavvio, usare `sudo raspi-config`:
+
+> Interfacing Options → Serial
+>
+>    Would you like a login shell accessible over serial? → No
+>
+>    Would you like the serial port hardware to be enabled? → Yes
+
+
+Modificare `/boot/firmware/config.txt`, aggiungendo questa sezione alla fine del file:
+```
+# Disable bluetooth (interference with RaspBee II)
+dtoverlay=disable-bt
 ```
 
-Verifica:
+Riavviare il sistema con `reboot` e fare la verifica:
 
 ```bash
 timedatectl
@@ -36,7 +40,7 @@ ls -l /dev/ttyAMA0
 Installarlo tramite container rende la procedura più semplice e pulita, senza dover abilitare repository aggiuntivi.
 
 ```bash
-sudo apt-get install --no-install-recommends podman uidmap slirp4netns
+sudo apt install --no-install-recommends podman uidmap slirp4netns
 mkdir -p ~/Code/zigbee2mqtt
 cd "$_"
 mkdir data
@@ -64,13 +68,14 @@ mqtt:
 serial:
   port: /dev/ttyAMA0
   adapter: deconz
+  baudrate: 38400
 ```
 
 Maggiori informazioni su [Zigbee2MQTT - deCONZ](https://www.zigbee2mqtt.io/guide/adapters/deconz.html).
 
 ### Mosquitto
 
-`mosquitto.conf`:
+`~/Code/mosquitto/mosquitto.conf`:
 ```
 listener 1883
 allow_anonymous true
@@ -79,25 +84,6 @@ allow_anonymous true
 ```
 podman run --rm --name mosquitto --network host -p 1883:1883 -p 9001:9001 -v ~/Code/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf registry.hub.docker.com/library/eclipse-mosquitto
 ```
-
-### Configurazione sistema
-
-NON SONO SICURO DI NIENTE!!!
-
-> Interfacing Options → Serial
->
->    Would you like a login shell accessible over serial? → No
->
->    Would you like the serial port hardware to be enabled? → Yes
-
-
-Modificare `/boot/firmware/config.txt`, aggiungendo questa sezione:
-```
-# Disable bluetooth (interference with RaspBee II)
-dtoverlay=disable-bt   
-```
-
-Riavviare il sistema con `reboot`.
 
 ### Avvio di prova
 
