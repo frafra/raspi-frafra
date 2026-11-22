@@ -2,7 +2,7 @@
 
 Questi sono gli appunti personali di FraFra e delle sue avventure col Raspberry Pi.
 
-Il mio obiettivo finale è quello di automatizzare alcune operazioni in casa tramite sensori e software libero, come l'accensione e lo spegnimento delle luci per le piante, così come la gestione del riscaldamento e della ventilazione in casa. Il tutto tenendo conto del prezzo variabile dell'energia elettrica.
+Il mio obiettivo finale è quello di automatizzare alcune operazioni in casa tramite sensori e software libero, come l'accensione e lo spegnimento delle luci per le piante, il controllo dei parametri ambientali, la gestione del riscaldamento e della ventilazione in casa, e magari riuscire a fare ciò tenendo conto del prezzo variabile dell'energia elettrica.
 
 Obiettivi raggiunti:
 - [X] Far funzionare il modulo BME280
