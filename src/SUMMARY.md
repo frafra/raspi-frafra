@@ -5,11 +5,13 @@
 - [I²C](./i2c.md)
 - [Hardware](./hardware.md)
   - [BME280](./hardware/bme280.md)
+  - [PMS5003](./hardware/pms5003.md)
   - [RaspBee II](./hardware/raspbee2.md)
 
 # Servizi
 
 - [MQTT (Mosquitto)](./servizi/mqtt.md)
 - [Sensore BME280](./servizi/bme280.md)
+- [Sensore PMS5003](./servizi/pms5003.md)
 - [Zigbee2MQTT](./servizi/zigbee2mqtt.md)
 - [Home Assistant](./servizi/homeassistant.md)

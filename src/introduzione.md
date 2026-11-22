@@ -8,6 +8,7 @@ Obiettivi raggiunti:
 - [X] Far funzionare il modulo BME280
 - [X] Far funzionare il modulo RaspBee II
 - [X] Collegare il BME280 a MQTT
+- [X] Collegare il PMS5003 a MQTT
 - [X] Controllare IKEA Trådfri con Zigbee2MQTT
 - [X] Configurare Home Assistant
 - [ ] Accesso remoto

@@ -46,6 +46,7 @@ Dall'interfaccia di Home Assistant:
 1. L'integrazione MQTT si aggiunge con broker `127.0.0.1` e porta `1883`
 2. I dispositivi Zigbee dovrebbero comparire da soli al primo segnale
 3. I sensori del [BME280](bme280.md) vengono individuati automaticamente
+4. I sensori del [PMS5003](pms5003.md) vengono individuati automaticamente
 
 ## Aggiornamenti
 
